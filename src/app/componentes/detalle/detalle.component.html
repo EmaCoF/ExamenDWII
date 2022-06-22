@@ -1,37 +1,9 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <!--js-->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scala=1, maximum-scale=1, minimum-scale=1">
-</head>
-
-<body>
-    <!-- Navegación -->
-    <header>
-        <ul class="nav nav-tabs" style="background: #495057;">
-            <li class="nav-item">
-                <a routerLink="/Home" [routerLinkActive]="'active'" class="nav-link" href="#" style="color: white;">
-                    <i class="fa-solid fa-house-user"></i> Home
-                </a>
-            </li>
-            <li class="nav-item">
-                <a routerLink="/Detalle" [routerLinkActive]="'active'" class="nav-link active" href="">
-                    <i class="fa-solid fa-hand-holding-heart"></i> Lista de Deseos
-                </a>
-            </li>
-        </ul>
-    </header>
-
-    <div class="small-container single-product">
-        <div *ngFor="let Det of _servicio.InfoDet" class="row">
-            <div class="col-2">
-                <img src="{{Det.Imagen}}" width="100%" id="ProductImg">
-                <!-- <div class="small-img-row">
+<app-navegacion></app-navegacion>
+<div class="small-container single-product">
+    <div *ngFor="let Det of _servicio.InfoDet" class="row">
+        <div class="col-2">
+            <img src="{{Det.Imagen}}" width="100%" id="ProductImg">
+            <!-- <div class="small-img-row">
                     <div class="small-img-col">
                         <img src="data:image/jpeg;base64,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"
                             width="100%" class="small-img">
@@ -45,42 +17,39 @@
                             width="100%" class="small-img">
                     </div>
                 </div> -->
-            </div>
-            <div class="col-2">
-                <p>{{Det.Etiqueta}}</p>
-                <h1>{{Det.Titulo}}</h1>
-                <h4>{{Det.Precio}}</h4>
-                <p>{{Det.Stock}}</p>
-                <input type="number" value="1">
-                <a href="" class="btnCarrito">Agregar al Carrito</a>
+        </div>
+        <div class="col-2">
+            <p>{{Det.Etiqueta}}</p>
+            <h1>{{Det.Titulo}}</h1>
+            <h4>{{Det.Precio}}</h4>
+            <p>{{Det.Stock}}</p>
+            <input type="number" value="1">
+            <a href="" class="btnCarrito">Agregar al Carrito</a>
 
-                <h3>Detalles </h3>
-                <br>
-                <p>{{Det.Descripcion}}</p>
-            </div>
+            <h3>Detalles </h3>
+            <br>
+            <p>{{Det.Descripcion}}</p>
         </div>
     </div>
+</div>
 
-    <script>
-        var ProductImg = document.getElementById("ProductImg");
-        var SmallImg = document.getElementsByClassName("small-img");
+<script>
+    var ProductImg = document.getElementById("ProductImg");
+    var SmallImg = document.getElementsByClassName("small-img");
 
-        SmallImg[0].onclick = function() {
-            ProductImg.src = SmallImg[0].src;
-        }
+    SmallImg[0].onclick = function() {
+        ProductImg.src = SmallImg[0].src;
+    }
 
-        SmallImg[1].onclick = function() {
-            ProductImg.src = SmallImg[1].src;
-        }
+    SmallImg[1].onclick = function() {
+        ProductImg.src = SmallImg[1].src;
+    }
 
-        SmallImg[2].onclick = function() {
-            ProductImg.src = SmallImg[2].src;
-        }
+    SmallImg[2].onclick = function() {
+        ProductImg.src = SmallImg[2].src;
+    }
 
-        SmallImg[3].onclick = function() {
-            ProductImg.src = SmallImg[3].src;
-        }
-    </script>
-</body>
-
-</html>
+    SmallImg[3].onclick = function() {
+        ProductImg.src = SmallImg[3].src;
+    }
+</script>
