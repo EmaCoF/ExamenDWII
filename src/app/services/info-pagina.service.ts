@@ -69,17 +69,25 @@ export class InfoPaginaService {
     return this.getQuery(`${id}.json`);
   }
 
-  Login(){
+  
+  async Login(usuario:any,Contrasenia:any):Promise<boolean>{
     var Refusuario = ref(getDatabase());
-    get(child(Refusuario,'Usuarios')).then((snapshot) => {
+
+    return get(child(Refusuario,'Usuarios/'+usuario+'/Contrasenia')).then((snapshot) => {
       if (snapshot.exists()) {
+        console.log(snapshot.key);
         console.log(snapshot.val());
+        if(snapshot.val()==Contrasenia){
+          return false
+        } else {
+          return true
+        }
       } else {
-        console.log("No data available");
+        return true
       }
     }).catch((error) => {
       console.error(error);
+      return true
     });
-    
   }
 }

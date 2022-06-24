@@ -10,6 +10,7 @@ import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { NavegacionComponent } from './componentes/navegacion/navegacion.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListaDeseosComponent } from './catalogo/lista-deseos/lista-deseos.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetalleComponent,
     CatalogoComponent,
     LoginComponent,
-    NavegacionComponent
+    NavegacionComponent,
+    ListaDeseosComponent
   ],
   imports: [
     BrowserModule,

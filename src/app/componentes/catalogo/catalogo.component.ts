@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoPaginaService } from 'src/app/services/info-pagina.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalogo',
@@ -8,9 +9,12 @@ import { InfoPaginaService } from 'src/app/services/info-pagina.service';
 })
 export class CatalogoComponent implements OnInit {
 
-  constructor(public _servicio : InfoPaginaService) { }
+  constructor(private router:Router, public _servicio : InfoPaginaService) { }
 
   ngOnInit(): void {
   }
 
+  Detalle(id:number){
+    this.router.navigate(['/Detalle',id])
+  }
 }

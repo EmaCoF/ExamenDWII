@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navegacion',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavegacionComponent implements OnInit {
 
-  constructor() { }
+  Sesion:boolean=false;
+  constructor(private router:Router) {
+    if (sessionStorage.getItem('Usuario')==null) {
+      this.Sesion=false
+    }else{
+      if (sessionStorage.getItem('Usuario')=='null') {
+        this.Sesion=false
+      }else{
+        this.Sesion=true
+      }
+    }
+
+   }
 
   ngOnInit(): void {
   }
 
+  CerrarSession(){
+    console.log("no")
+    sessionStorage.setItem('Usuario','null')
+    window.location.reload();
+  }
 }

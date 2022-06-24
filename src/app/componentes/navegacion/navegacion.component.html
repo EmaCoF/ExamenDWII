@@ -21,10 +21,15 @@
         </li>
 
 
-        <li class="nav-item">
+        <li *ngIf="!Sesion" class="nav-item">
             <a routerLink="/Login" [routerLinkActive]="'active '" class="nav-link blanco">
                 <i class="fa-solid fa-hand-holding-heart"></i> Login
             </a>
+        </li>
+        <li *ngIf="Sesion" class="nav-item">
+            <button (click)="CerrarSession()" class="nav-link">
+                <i class="fa-solid fa-hand-holding-heart"></i> Cerrar Session
+            </button>
         </li>
 
     </ul>

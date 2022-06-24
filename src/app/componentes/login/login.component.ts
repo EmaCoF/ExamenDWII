@@ -1,5 +1,7 @@
+import { partitionArray } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute,Router } from '@angular/router';
 import { FirebaseError } from 'firebase/app';
 import { InfoPaginaService } from '../../services/info-pagina.service';
 
@@ -10,16 +12,42 @@ import { InfoPaginaService } from '../../services/info-pagina.service';
 })
 export class LoginComponent implements OnInit {
 
+  fallo:boolean=false;
   forma!:FormGroup;
 
-  constructor(private fb:FormBuilder, private fireService:InfoPaginaService) {
+  constructor(private routerRec:ActivatedRoute, private router:Router, private fb:FormBuilder, private fireService:InfoPaginaService) {
     this.CrearFormulario();
-    fireService.Login();
+
+    // Verificar si no hay error
+    this.routerRec.params.subscribe(params=>{
+      if(params['estado']!=null){
+        var  verificador: boolean =params['estado'];
+        this.fallo=verificador;
+      }   
+    })
   }
 
   ngOnInit(): void {
   }
 
+  
+  //LLamar a firebase para comprobar
+  Ingresar(){
+    var user=this.forma?.get('Usuario')?.value
+    var pass=this.forma?.get('Contrasenia')?.value
+    this.fireService.Login(user,pass).then(val=>{
+      if (val===false) {
+        sessionStorage.setItem('Usuario',user)
+        this.router.navigate(['/Catalogo'])
+      }
+      else {
+        console.log(val)
+        this.router.navigate(['/Login',val])
+      }
+      
+    });
+    
+  }
   CrearFormulario(){
     this.forma=this.fb.group({
       Usuario:['',[Validators.required,Validators.minLength(5)]],
