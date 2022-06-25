@@ -2,10 +2,11 @@
 <!-- Cards de productos -->
 <div class="Productos">
     <div *ngFor="let Prod of _servicio.InfoProd; let i=index" [attr.data-index]="i" class="card" style="width: 18rem;">
+
         <img src="{{Prod.Imagen}}">
         <h4>{{Prod.Nombre}}</h4>
         <h5>Precio: {{Prod.Precio}}</h5>
-        <h6><i class="fa-solid fa-heart" style="margin: 0 0 15px 0;"></i> {{Prod.texto}}</h6>
+        <h6><i class="fa-solid fa-heart" style="margin: 0 0 15px 0;"></i> Añadir a la lista de deseos</h6>
         <button (click)=Detalle(i) type="button" class="btn btn-warning" style="margin: 0 0 20px 0;">Detalles</button>
         <i class="fa-solid fa-cart-plus"></i>
 

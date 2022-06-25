@@ -32,16 +32,14 @@ const db = getDatabase();
 export class InfoPaginaService {
   cargada = false;
   InfoProd : any = [];
-  InfoDet : any = [];
 
   constructor(private http: HttpClient) { 
     this.cargarProducto();
-    this.cargarDetalle()
+   
   }
-
   cargarProducto()
   {
-    this.http.get('https://angulardemo-a7369-default-rtdb.firebaseio.com/productos_subarashijp.json')
+    this.http.get('https://proyectodwii-default-rtdb.firebaseio.com/Productos.json')
     .subscribe( (resp) => 
     {
       this.cargada = true;
@@ -49,25 +47,7 @@ export class InfoPaginaService {
       console.log(resp);
     });
   }
-  cargarDetalle()
-  {
-    this.http.get('https://angulardemo-a7369-default-rtdb.firebaseio.com/detalle_subarashijp.json')
-    .subscribe( (resp) =>
-    {
-      this.cargada = true;
-      this.InfoDet = resp;
-      console.log(resp);
-    })
-  }
-  getQuery (query : string)
-  {
-    const url = `https://angulardemo-a7369-default-rtdb.firebaseio.com/detalle_subarashijp/${query}`;
-  }
 
-  getDetalle (id : string)
-  {
-    return this.getQuery(`${id}.json`);
-  }
 
   
   async Login(usuario:any,Contrasenia:any):Promise<boolean>{
@@ -90,4 +70,26 @@ export class InfoPaginaService {
       return true
     });
   }
+
+  
+  async getDetalle(id:number):Promise<any>{
+    var Refusuario = ref(getDatabase());
+
+    return get(child(Refusuario,'Productos/'+id)).then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+        return snapshot.val();
+      } else {
+        return null
+      }
+    }).catch((error) => {
+      console.error(error);
+      return null
+    });
+  }
+
+
+
+  
+  
 }

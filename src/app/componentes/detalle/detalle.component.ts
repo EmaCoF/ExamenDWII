@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InfoPaginaService } from 'src/app/services/info-pagina.service';
+import { CatalogoComponent } from '../catalogo/catalogo.component';
 
 @Component({
   selector: 'app-detalle',
@@ -8,28 +9,28 @@ import { InfoPaginaService } from 'src/app/services/info-pagina.service';
   styleUrls: ['./detalle.component.css']
 })
 export class DetalleComponent implements OnInit {
-  detalle: any  = {};
-  loadingArtist = false;
+ Producto : any;
+ ID!: number;
+ Cargando : boolean = false;
 
-  constructor(private router : ActivatedRoute, public _servicio : InfoPaginaService) 
+  constructor( private router:Router, public _servicio : InfoPaginaService, private Arouter : ActivatedRoute) 
   {
-    this.loadingArtist = true;
-    this.router.params.subscribe(params => {
-      // this.getDetalle(params['id']);
+    this.Arouter.params.subscribe(params => {
+      if(params ['ID'] !=null){
+        this.ID = params ['ID']
+      }
     });
-   }
+     _servicio.getDetalle(this.ID).then(producto => {
+      this.Producto = producto
+      console.log(this.Producto)
+      this.Cargando = true;
+     })
+    
+  }
 
    ngOnInit(): void {
   }
-  // getDetalle(id: string) {
-  //   this.loadingArtist = true;
-  //   this.servicio.getDetalle(id).subscribe(
-  //     detalle => {
-  //       console.log(detalle);
-  //       this.detalle = detalle;
-  //       this.loadingArtist = false;
-  //     }
-  //   );
-  // }
+
+
 
 }

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class CatalogoComponent implements OnInit {
 
+
   constructor(private router:Router, public _servicio : InfoPaginaService) { }
 
   ngOnInit(): void {
