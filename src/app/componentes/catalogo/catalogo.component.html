@@ -1,8 +1,7 @@
 <app-navegacion></app-navegacion>
 <!-- Cards de productos -->
-<div class="Productos">
+<div ngClass="animated fadeIn" style="margin-top: 50px;" class="Productos">
     <div *ngFor="let Prod of _servicio.InfoProd; let i=index" [attr.data-index]="i" class="card" style="width: 18rem;">
-
         <img src="{{Prod.Imagen}}">
         <h4>{{Prod.Nombre}}</h4>
         <h5>Precio: {{Prod.Precio}}</h5>

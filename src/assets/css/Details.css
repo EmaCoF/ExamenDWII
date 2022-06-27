@@ -111,3 +111,22 @@ p {
     text-decoration: none;
     font-weight: bold;
 }
+
+.btniWishList {
+    display: inline-block;
+    background: #495057;
+    color: #FFC107;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btniWishList:hover {
+    background: #FFC107;
+    color: #495057;
+    text-decoration: none;
+    font-weight: bold;
+}

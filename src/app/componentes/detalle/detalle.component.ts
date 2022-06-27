@@ -11,7 +11,7 @@ import { CatalogoComponent } from '../catalogo/catalogo.component';
 export class DetalleComponent implements OnInit {
  Producto : any;
  ID!: number;
- Cargando : boolean = false;
+ Cargando : boolean = true;
 
   constructor( private router:Router, public _servicio : InfoPaginaService, private Arouter : ActivatedRoute) 
   {
@@ -23,7 +23,7 @@ export class DetalleComponent implements OnInit {
      _servicio.getDetalle(this.ID).then(producto => {
       this.Producto = producto
       console.log(this.Producto)
-      this.Cargando = true;
+       this.Cargando = false;
      })
     
   }

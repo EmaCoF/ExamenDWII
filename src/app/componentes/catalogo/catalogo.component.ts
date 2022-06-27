@@ -10,12 +10,16 @@ import { Router } from '@angular/router';
 export class CatalogoComponent implements OnInit {
 
 
-  constructor(private router:Router, public _servicio : InfoPaginaService) { }
-
+  constructor(private router:Router, public _servicio : InfoPaginaService) {
+   
+   }
+   
   ngOnInit(): void {
+    
   }
 
   Detalle(id:number){
     this.router.navigate(['/Detalle',id])
   }
+
 }

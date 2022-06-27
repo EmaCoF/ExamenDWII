@@ -1,16 +1,18 @@
 <app-navegacion></app-navegacion>
-<div *ngIf="Cargando" class="small-container single-product">
+<app-loading *ngIf="Cargando"></app-loading>
+<div *ngIf="!Cargando" class="row animated fadeIn" class="small-container single-product">
     <div class="row">
         <div class="col-2">
             <img src="{{Producto.Imagen}}" width="100%" id="ProductImg">
         </div>
         <div class="col-2">
             <p>{{Producto.Etiqueta}}</p>
-            <h1>{{Producto.Titulo}}</h1>
+            <h1>{{Producto.Nombre}}</h1>
             <h4>{{Producto.Precio}}</h4>
             <p>Stock: {{Producto.Stock}} artículos</p>
             <input type="number" value="1">
             <a href="" class="btnCarrito">Agregar al Carrito</a>
+            <a href="" class="btniWishList">Añadir a la lista de deseos</a>
             <h3> Detalles </h3>
             <br>
             <p>{{Producto.Descripcion}}</p>

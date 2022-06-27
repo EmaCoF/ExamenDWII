@@ -32,6 +32,7 @@ const db = getDatabase();
 export class InfoPaginaService {
   cargada = false;
   InfoProd : any = [];
+  InfoHome : any = [];
 
   constructor(private http: HttpClient) { 
     this.cargarProducto();
@@ -47,6 +48,8 @@ export class InfoPaginaService {
       console.log(resp);
     });
   }
+
+
 
 
   
@@ -76,6 +79,22 @@ export class InfoPaginaService {
     var Refusuario = ref(getDatabase());
 
     return get(child(Refusuario,'Productos/'+id)).then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+        return snapshot.val();
+      } else {
+        return null
+      }
+    }).catch((error) => {
+      console.error(error);
+      return null
+    });
+  }
+
+  async getImgHome(id:number):Promise<any>{
+    var Refusuario = ref(getDatabase());
+
+    return get(child(Refusuario,'Home/'+id)).then((snapshot) => {
       if (snapshot.exists()) {
         console.log(snapshot.val());
         return snapshot.val();

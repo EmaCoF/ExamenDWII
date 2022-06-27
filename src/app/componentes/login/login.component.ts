@@ -11,24 +11,25 @@ import { InfoPaginaService } from '../../services/info-pagina.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  
   fallo:boolean=false;
   forma!:FormGroup;
 
   constructor(private routerRec:ActivatedRoute, private router:Router, private fb:FormBuilder, private fireService:InfoPaginaService) {
+    
     this.CrearFormulario();
-
+    
     // Verificar si no hay error
+    
     this.routerRec.params.subscribe(params=>{
       if(params['estado']!=null){
         var  verificador: boolean =params['estado'];
         this.fallo=verificador;
-      }   
-    })
+      }  
+    });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   
   //LLamar a firebase para comprobar
@@ -41,18 +42,18 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/Catalogo'])
       }
       else {
-        console.log(val)
+        console.log(val)        
         this.router.navigate(['/Login',val])
       }
-      
     });
     
   }
   CrearFormulario(){
+    
     this.forma=this.fb.group({
       Usuario:['',[Validators.required,Validators.minLength(5)]],
       Contrasenia:['',[Validators.required]]
-    })
+    });
   }
 
   get UsuarioError(){

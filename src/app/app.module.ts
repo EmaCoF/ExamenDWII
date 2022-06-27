@@ -11,6 +11,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { NavegacionComponent } from './componentes/navegacion/navegacion.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListaDeseosComponent } from './catalogo/lista-deseos/lista-deseos.component';
+import { LoadingComponent } from './componentes/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ListaDeseosComponent } from './catalogo/lista-deseos/lista-deseos.compo
     CatalogoComponent,
     LoginComponent,
     NavegacionComponent,
-    ListaDeseosComponent
+    ListaDeseosComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
