@@ -11,14 +11,13 @@ import { InfoPaginaService } from 'src/app/services/info-pagina.service';
   styleUrls: ['./lista-deseos.component.css']
 })
 export class ListaDeseosComponent implements OnInit {
-  Deseos:Array<any>
+
   Existencias:Boolean;
   Carga: Boolean;
   ListaDeseos: any[number];
   Usuario:any;
   constructor(private router:Router, public _servicio : InfoPaginaService,private http: HttpClient) {
     this.ListaDeseos=new Array;
-    this.Deseos=new Array;
     this.Carga=false;
     this.Existencias=false;
 
@@ -30,9 +29,8 @@ export class ListaDeseosComponent implements OnInit {
 
     //carga la lista de deseos
     _servicio.GetListaDeseos(this.Usuario).then(async(Producto:Array<any>)=>{
-      this.Deseos=Producto;
-      if (true) {
-        await Object.values(this.Deseos).forEach( async element => {
+      if (Producto!=null && Object.values(Producto).length) {
+        await Object.values(Producto).forEach( async element => {
           //espera a cargar los productos
           await this.AgregarProducto(element);
         });
