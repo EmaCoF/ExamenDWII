@@ -14,8 +14,8 @@
         </li>
 
 
-        <li class="nav-item">
-            <a routerLink="/Detalle" [routerLinkActive]="'active '" class="nav-link blanco">
+        <li *ngIf="Sesion" class="nav-item">
+            <a routerLink="/ListaDeseos" [routerLinkActive]="'active '" class="nav-link blanco">
                 <i class="fa-solid fa-hand-holding-heart"></i> Lista de Deseos
             </a>
         </li>

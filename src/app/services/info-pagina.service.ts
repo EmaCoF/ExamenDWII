@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import{getDatabase,ref,set,child,get} from "firebase/database";
+import{getDatabase,ref,set,child,get,query,orderByChild,equalTo, onValue} from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -80,7 +80,6 @@ export class InfoPaginaService {
 
     return get(child(Refusuario,'Productos/'+id)).then((snapshot) => {
       if (snapshot.exists()) {
-        console.log(snapshot.val());
         return snapshot.val();
       } else {
         return null
@@ -91,24 +90,65 @@ export class InfoPaginaService {
     });
   }
 
-  async getImgHome(id:number):Promise<any>{
+  async GetListaDeseos(Usuario:string):Promise<any>{
     var Refusuario = ref(getDatabase());
+    return get(child(Refusuario,'Usuarios/'+Usuario+'/ListaDeseos')).then((snapshot) => {
+      if (snapshot.exists()) {
+        return snapshot.val();
+      } else {
+        return null
+      }
+    }).catch((error) => {
+      console.error(error);
+      return null
+    });
+  }
 
-    return get(child(Refusuario,'Home/'+id)).then((snapshot) => {
+  async GetListaDeseosExist(Usuario:string,ID:number):Promise<Boolean>{
+    var Refusuario = ref(getDatabase());
+    return get(child(Refusuario,'Usuarios/'+Usuario+'/ListaDeseos/'+ID)).then((snapshot) => {
       if (snapshot.exists()) {
         console.log(snapshot.val());
-        return snapshot.val();
+        return true;
       } else {
-        return null
+        return false
       }
     }).catch((error) => {
       console.error(error);
-      return null
+      return false
     });
+  }
+
+  async AgregarListaDeseos(Usuario:string,ID:number):Promise<Boolean>{
+    var Verificador=false;
+    console.log("1");
+    await set(ref(db, 'Usuarios/'+Usuario+'/ListaDeseos/' + ID),ID).then(() => {
+       Verificador= true;
+       console.log("2");
+    })
+    .catch((error) => {
+      Verificador= false;
+      console.log("3");
+    });;
+    return Verificador
+    console.log("4");
+  }
+
+  async EliminarListaDeseos(Usuario:string,ID:number):Promise<Boolean>{
+    var Verificador=false;
+    await set(ref(db, 'Usuarios/'+Usuario+'/ListaDeseos/' + ID),null).then(() => {
+       Verificador= true;
+    })
+    .catch((error) => {
+      Verificador= false;
+    });;
+    return Verificador
   }
 
 
 
-  
-  
+
 }
+
+
+

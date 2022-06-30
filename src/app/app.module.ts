@@ -10,8 +10,8 @@ import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { NavegacionComponent } from './componentes/navegacion/navegacion.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ListaDeseosComponent } from './catalogo/lista-deseos/lista-deseos.component';
 import { LoadingComponent } from './componentes/loading/loading.component';
+import { ListaDeseosComponent } from './componentes/lista-deseos/lista-deseos.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +21,8 @@ import { LoadingComponent } from './componentes/loading/loading.component';
     CatalogoComponent,
     LoginComponent,
     NavegacionComponent,
-    ListaDeseosComponent,
-    LoadingComponent
+    LoadingComponent,
+    ListaDeseosComponent
   ],
   imports: [
     BrowserModule,

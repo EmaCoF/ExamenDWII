@@ -12,18 +12,18 @@ import { InfoPaginaService } from '../../services/info-pagina.service';
 })
 export class LoginComponent implements OnInit {
   
-  fallo:boolean=false;
+  fallo:Boolean;
   forma!:FormGroup;
 
   constructor(private routerRec:ActivatedRoute, private router:Router, private fb:FormBuilder, private fireService:InfoPaginaService) {
-    
+    this.fallo=false;
     this.CrearFormulario();
     
     // Verificar si no hay error
     
     this.routerRec.params.subscribe(params=>{
       if(params['estado']!=null){
-        var  verificador: boolean =params['estado'];
+        var  verificador: Boolean =params['estado'];
         this.fallo=verificador;
       }  
     });
@@ -37,13 +37,17 @@ export class LoginComponent implements OnInit {
     var user=this.forma?.get('Usuario')?.value
     var pass=this.forma?.get('Contrasenia')?.value
     this.fireService.Login(user,pass).then(val=>{
-      if (val===false) {
+      if (val==false) {
         sessionStorage.setItem('Usuario',user)
         this.router.navigate(['/Catalogo'])
       }
       else {
-        console.log(val)        
-        this.router.navigate(['/Login',val])
+        console.log(val);        
+        this.router.navigate(['/Login',val]);
+        if (Boolean(this.fallo)==true) {
+          
+          window.location.reload();
+        }
       }
     });
     
