@@ -90,10 +90,11 @@ export class InfoPaginaService {
     });
   }
 
-  async GetListaDeseos(Usuario:string):Promise<any>{
+  async GetListaDeseos(Usuario:string):Promise<Array<any>>{
     var Refusuario = ref(getDatabase());
     return get(child(Refusuario,'Usuarios/'+Usuario+'/ListaDeseos')).then((snapshot) => {
       if (snapshot.exists()) {
+        console.log(snapshot.val())
         return snapshot.val();
       } else {
         return null
@@ -122,7 +123,7 @@ export class InfoPaginaService {
   async AgregarListaDeseos(Usuario:string,ID:number):Promise<Boolean>{
     var Verificador=false;
     console.log("1");
-    await set(ref(db, 'Usuarios/'+Usuario+'/ListaDeseos/' + ID),ID).then(() => {
+    await set(ref(db, 'Usuarios/'+Usuario+'/ListaDeseos/' + ID),Number(ID)).then(() => {
        Verificador= true;
        console.log("2");
     })
