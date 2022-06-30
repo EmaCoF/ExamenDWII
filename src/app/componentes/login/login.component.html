@@ -1,0 +1,37 @@
+<app-navegacion></app-navegacion>
+<br>
+
+<body>
+    <div ngClass="animated fadeIn" id="DivLogin" class=" col-8" style="padding:50px !important;">
+        <h2 style="margin-bottom: 55px;">
+            <b> Iniciar Sesión</b>
+            <hr>
+        </h2>
+
+        <form autocomplete="off" [formGroup]="forma">
+            <div class="form-group row">
+                <label class="col-2 col-form-label" for="Usuario">Nombre</label>
+                <div class="col">
+                    <input class="form-control" type="text" placeholder="Usuario" formControlName="Usuario" [class.is-invalid]="UsuarioError">
+                    <small *ngIf="UsuarioError" class="text-danger">
+                            Ingrese 5 letras
+                        </small>
+                </div>
+            </div>
+            <div style="margin-bottom: 50px;" class="form-group row">
+                <label class="col-2 col-form-label" for="Contrasenia">Contraseña</label>
+                <div class="col">
+                    <input class="form-control" type="password" placeholder="Contraseña" formControlName="Contrasenia" [class.is-invalid]="ContraseniaError">
+                    <small *ngIf="ContraseniaError" class="text-danger">
+                            Ingrese 5 letras
+                        </small>
+                </div>
+            </div>
+            <button (click)="Ingresar()" class="btn btn-warning mb-2"><b>Ingresar</b></button>
+            <div *ngIf="fallo" class="alert alert-danger alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">&times;</button> Usuario o contraseñas no validas
+            </div>
+        </form>
+
+    </div>
+</body>

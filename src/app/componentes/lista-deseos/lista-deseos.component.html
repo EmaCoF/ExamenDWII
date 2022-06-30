@@ -1,0 +1,17 @@
+<app-navegacion></app-navegacion>
+<div style="height: 5rem;"></div>
+<!-- Cards de productos -->
+<div ngClass="animated fadeIn" style="margin-top: 50px;" class="Productos">
+    <div *ngFor="let Prod of ListaDeseos" class="card" style="width: 18rem;">
+        <img src="{{Prod.Imagen}}">
+        <h4>{{Prod.Nombre}}</h4>
+        <h5>Precio: {{Prod.Precio}}</h5>
+        <h6><i class="fa-solid fa-heart" style="margin: 0 0 15px 0;"></i> Añadir a la lista de deseos</h6>
+        <button (click)=Detalle(Prod.index) type="button" class="btn btn-warning" style="margin: 0 0 20px 0;">Detalles</button>
+        <i class="fa-solid fa-cart-plus"></i>
+
+    </div>
+</div>
+<div *ngIf="!Existencias">
+    <h2>No hay productos en el carrito</h2>
+</div>

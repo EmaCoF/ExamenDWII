@@ -1,0 +1,36 @@
+#blog h6,
+h1,
+p {
+    text-align: center;
+}
+
+#blog .contenedor {
+    display: flex;
+    /* Para que las imágenes estén en una sola dirección */
+    justify-content: center;
+    /* define cómo el navegador distribuye el espacio entre y alrededor de los items flex, a lo largo del eje principal de su 		contenedor. */
+    flex-wrap: wrap;
+    /* Par que los elemento que no caben bajen */
+    z-index: 2;
+    position: relative;
+}
+
+#blog article {
+    margin: 15px;
+}
+
+#blog img {
+    width: 275px;
+    height: 200px;
+    border-radius: 15px;
+}
+
+#blog .Descripcion h6 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#blog .Descripcion {
+    margin: 0 0 65px 0;
+}

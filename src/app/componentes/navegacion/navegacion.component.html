@@ -1,0 +1,36 @@
+<header>
+    <ul class="nav nav-tabs" style="background: #495057;">
+
+        <li class="nav-item">
+            <a routerLink="/Home" [routerLinkActive]="'active'" class="nav-link blanco">
+                <i class="fa-solid fa-house-user"></i> Home
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a routerLink="/Catalogo" [routerLinkActive]="'active '" class="nav-link blanco">
+                <i class="fa-solid fa-book-open"></i> Catalogo
+            </a>
+        </li>
+
+
+        <li *ngIf="Sesion" class="nav-item">
+            <a routerLink="/ListaDeseos" [routerLinkActive]="'active '" class="nav-link blanco">
+                <i class="fa-solid fa-hand-holding-heart"></i> Lista de Deseos
+            </a>
+        </li>
+
+
+        <li *ngIf="!Sesion" class="nav-item">
+            <a routerLink="/Login" [routerLinkActive]="'active '" class="nav-link blanco">
+                <i class="fa-solid fa-user-group"></i> Login
+            </a>
+        </li>
+        <li *ngIf="Sesion" class="nav-item">
+            <button (click)="CerrarSession()" class="nav-link">
+                <i class="fa-solid fa-hand-holding-heart"></i> Cerrar Session
+            </button>
+        </li>
+
+    </ul>
+</header>

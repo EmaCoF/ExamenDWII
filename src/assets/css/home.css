@@ -1,0 +1,161 @@
+@import url(banner.css);
+@import url(blog.css);
+@import url(info.css);
+@import url(Animation.css);
+@import url(http://fonts.googleapis.com/css?family=RocknRoll+One);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* para que cuando se le de un border y/o padding a un elemento no se expandan mas allá de la caja  */
+}
+
+body {
+    font-family: 'RocknRoll One';
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background-color: #FFC107;
+    color: #fff;
+    position: fixed;
+    /* su posición final será siempre fija */
+    top: 0;
+    left: 0;
+    z-index: 100;
+    /* para que esté siempre por delante de los demás elementos */
+}
+
+.contenedor {
+    width: 98%;
+    margin: auto;
+}
+
+
+/* Descripción de los artículos */
+
+.Descripcion {
+    width: 275px;
+    height: 10px;
+}
+
+
+/* Fin Descripción de los artículos */
+
+h1 {
+    float: left;
+}
+
+header .contenedor {
+    display: table;
+}
+
+section {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+#Welcome {
+    text-align: center;
+    /* padding-top: 5%; */
+}
+
+footer .contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+
+.copy {
+    font-size: 20px;
+    color: white;
+}
+
+.sociales {
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+}
+
+.sociales a {
+    color: teal;
+    text-decoration: none;
+}
+
+
+/* Imágenes de recetario */
+
+.imagnes {
+    width: 50px;
+    height: 50px;
+}
+
+
+/* Fin Imágenes de recetario */
+
+
+/* Ventana emergente */
+
+.ventana {
+    background-color: turquoise;
+    width: 400px;
+    height: 400px;
+    padding: 33px;
+    border-radius: 22px;
+    position: absolute;
+    left: 33%;
+    top: 117%;
+    display: none;
+}
+
+#cerrar {
+    position: absolute;
+    right: 7px;
+    top: 1px;
+}
+
+
+/* Fin Ventana emergente */
+
+
+/*Div para footer*/
+
+.DivFooter {
+    width: 100%;
+    background-image: linear-gradient(to right, #495057, #495057);
+}
+
+
+/*Fin Div para footer*/
+
+
+/* Tabla - Recetario */
+
+td,
+th,
+table {
+    text-align: center;
+    border: 2px solid #31B2AB;
+    background-color: white;
+    font-size: 20px;
+}
+
+
+/* Fin Tabla - Recetario */
+
+@media (min-width:768px) {
+    .sociales {
+        width: auto;
+    }
+    footer .contenedor {
+        justify-content: space-between;
+    }
+}
+
+@media (min-width:1024px) {
+    .contenedor {
+        width: 1000px;
+    }
+}
