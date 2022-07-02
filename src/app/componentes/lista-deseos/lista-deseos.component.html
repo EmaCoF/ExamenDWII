@@ -6,7 +6,10 @@
         <img src="{{Prod.Imagen}}">
         <h4>{{Prod.Nombre}}</h4>
         <h5>Precio: {{Prod.Precio}}</h5>
-        <h6><i class="fa-solid fa-heart" style="margin: 0 0 15px 0;"></i> Añadir a la lista de deseos</h6>
+        <h6>
+            <i *ngFor="let item of Prod.EstrellasA" class="fa fa-star checked" style="margin: 0 0 15px 0;"></i>
+            <i *ngFor="let item of Prod.EstrellasN" class="fa fa-star" style="margin: 0 0 15px 0;"></i>
+        </h6>
         <button (click)=Detalle(Prod.index) type="button" class="btn btn-warning" style="margin: 0 0 20px 0;">Detalles</button>
         <i class="fa-solid fa-cart-plus"></i>
 
